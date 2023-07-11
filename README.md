@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 84.201.137.178
+IP 84.201.137.178
 
 Frontend https://mesto.rpoltorakov.nomoredomains.work
 
