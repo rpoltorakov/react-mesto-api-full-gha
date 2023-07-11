@@ -5,7 +5,7 @@ import React from 'react'
 export default function Card({card, onCardClick, onCardLike, onCardDelete}) {
   const userContext = React.useContext(CurrentUserContext)
   const isOwn = card.owner._id === userContext._id
-  const isLiked = card.likes.some(i => i._id === userContext._id);
+  const isLiked = card.likes.some(i => i === userContext._id);
 
   function handleClick() {
     onCardClick({

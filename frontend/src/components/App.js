@@ -56,13 +56,16 @@ function App() {
 
   useEffect(() => {
       const jwt = localStorage.getItem('jwt')
-      auth.checkToken(jwt)
-        .then(data => {
-          setLoggedIn(true)
-          setCurrentUserEmail(data.user.email)
-          navigate('/')
-        })
-        .catch(error => {console.error(error)})
+      if (jwt) {
+        auth.checkToken(jwt)
+          .then(data => {
+            setLoggedIn(true)
+            setCurrentUserEmail(data.user.email)
+            navigate('/')
+          })
+          .catch(error => {console.error(error)})
+      }
+      
   }, [navigate]);
 
   function handleEditProfileClick() {
@@ -113,10 +116,10 @@ function App() {
     .catch(error => {console.error(error)})
   }
   function handleCardLike(card) {
-    const isLiked = card.likes.some(i => i._id === currentUser._id);
+    const isLiked = card.likes.some(i => i === currentUser._id);
     api.changeLikeCardStatus(card._id, isLiked)
     .then((newCard) => {
-      setCards(state => (state.map((c) => c._id === card._id ? newCard : c)));
+      setCards(state => state.map((c) => c._id === card._id ? newCard : c));
     })
     .catch(error => {console.error(error)})
   }
@@ -150,7 +153,6 @@ function App() {
   function handleLogoutClick() {
     auth.logout(currentUser._id)
       .then((res) => {
-        console.log(res)
         localStorage.removeItem('jwt')
         setLoggedIn(false)
         navigate('/signin', {replace: true})
