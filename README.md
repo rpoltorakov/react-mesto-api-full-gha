@@ -9,8 +9,8 @@
 
 ## Ссылки на проект
 
-IP-адрес x.x.x.x
+IP-адрес 84.201.137.178
 
-Frontend https://...
+Frontend https://mesto.rpoltorakov.nomoredomains.work
 
-Backend https://...
+Backend https://api.mesto.rpoltorakov.nomoredomains.work
